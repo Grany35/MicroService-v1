@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{90697575-0A90-4F77-9EA9-F702649D436B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B6FC9627-DFED-49C3-B187-8077BD6C3D71}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppGateways", "AppGateways", "{AF223616-A0D4-4857-8DEB-58601B1CC70F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BuildingBlocks", "BuildingBlocks", "{ED1DD73D-4FC2-4983-A933-1117FB9829DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{5B2EBDFB-E18F-44CB-9174-52266481DDE5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApiGateway", "WebApiGateway", "{60558648-A98D-40BF-BD3F-14998454B418}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.ApiGateway", "src\AppGateways\WebApiGateway\Web.ApiGateway\Web.ApiGateway.csproj", "{A40906AD-763D-4661-A86E-9DC368C205BE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AF223616-A0D4-4857-8DEB-58601B1CC70F} = {90697575-0A90-4F77-9EA9-F702649D436B}
+		{ED1DD73D-4FC2-4983-A933-1117FB9829DA} = {90697575-0A90-4F77-9EA9-F702649D436B}
+		{5B2EBDFB-E18F-44CB-9174-52266481DDE5} = {90697575-0A90-4F77-9EA9-F702649D436B}
+		{60558648-A98D-40BF-BD3F-14998454B418} = {AF223616-A0D4-4857-8DEB-58601B1CC70F}
+		{A40906AD-763D-4661-A86E-9DC368C205BE} = {60558648-A98D-40BF-BD3F-14998454B418}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A40906AD-763D-4661-A86E-9DC368C205BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40906AD-763D-4661-A86E-9DC368C205BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40906AD-763D-4661-A86E-9DC368C205BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40906AD-763D-4661-A86E-9DC368C205BE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

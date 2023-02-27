@@ -3,6 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{90697575-0A90-4F77-9EA9-F702649D436B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{B6FC9627-DFED-49C3-B187-8077BD6C3D71}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionItems\ServiceUrls.json = SolutionItems\ServiceUrls.json
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AppGateways", "AppGateways", "{AF223616-A0D4-4857-8DEB-58601B1CC70F}"
 EndProject

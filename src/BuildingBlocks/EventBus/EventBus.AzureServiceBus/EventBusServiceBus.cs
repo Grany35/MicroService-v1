@@ -123,7 +123,7 @@ public class EventBusServiceBus : BaseEventBus
 
         try
         {
-            var rule = managementClient.GetRuleAsync(EventBusConfig.DefaultTopicName, eventName, eventName)
+            var rule = managementClient.GetRuleAsync(EventBusConfig.DefaultTopicName, GetSubName(eventName), eventName)
                 .GetAwaiter()
                 .GetResult();
             ruleExists = rule != null;

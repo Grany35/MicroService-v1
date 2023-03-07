@@ -23,25 +23,7 @@ public class EventBusTests
     [TestMethod]
     public void subscribe_event_on_rabbitmq_test()
     {
-        services.AddSingleton<IEventBus>(sp =>
-        {
-            EventBusConfig config = new()
-            {
-                ConnectionRetryCount = 5,
-                SubscriberClientAppName = "EventBus.UnitTest",
-                DefaultTopicName = "MicroServiceTopicName",
-                EventBusType = EventBusType.RabbitMQ,
-                EventNameSuffix = "IntegrationEvent",
-                // Connection = new ConnectionFactory()
-                // {
-                //     HostName = "localhost",
-                //     Port = 5672,
-                //     UserName = "guest",
-                //     Password = "guest"
-                // }
-            };
-            return EventBusFactory.Create(config, sp);
-        });
+        services.AddSingleton<IEventBus>(sp => { return EventBusFactory.Create(GetRabbitConfig(), sp); });
 
         ServiceProvider sp = services.BuildServiceProvider();
 
@@ -54,20 +36,7 @@ public class EventBusTests
     [TestMethod]
     public void subscribe_event_on_azure_test()
     {
-        services.AddSingleton<IEventBus>(sp =>
-        {
-            EventBusConfig config = new()
-            {
-                ConnectionRetryCount = 5,
-                SubscriberClientAppName = "EventBus.UnitTest",
-                DefaultTopicName = "MicroServiceTopicName",
-                EventBusType = EventBusType.AzureServiceBus,
-                EventNameSuffix = "IntegrationEvent",
-                EventBusConnectionString =
-                    "Endpoint=sb://microtest.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=s3k41+t9Eghm+vry1pxZ7Oaf0/uQuioEL+ASbB65V8Y="
-            };
-            return EventBusFactory.Create(config, sp);
-        });
+        services.AddSingleton<IEventBus>(sp => { return EventBusFactory.Create(GetAzureConfig(), sp); });
 
         ServiceProvider sp = services.BuildServiceProvider();
 
@@ -75,5 +44,62 @@ public class EventBusTests
 
         eventBus.Subscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
         eventBus.UnSubscribe<OrderCreatedIntegrationEvent, OrderCreatedIntegrationEventHandler>();
+    }
+
+    [TestMethod]
+    public void send_message_to_rabbitmq_test()
+    {
+        services.AddSingleton<IEventBus>(sp => { return EventBusFactory.Create(GetRabbitConfig(), sp); });
+
+        ServiceProvider sp = services.BuildServiceProvider();
+
+        IEventBus eventBus = sp.GetRequiredService<IEventBus>();
+
+        eventBus.Publish(new OrderCreatedIntegrationEvent(1));
+    }
+
+    [TestMethod]
+    public void send_message_to_azure_test()
+    {
+        services.AddSingleton<IEventBus>(sp => { return EventBusFactory.Create(GetAzureConfig(), sp); });
+
+        ServiceProvider sp = services.BuildServiceProvider();
+
+        IEventBus eventBus = sp.GetRequiredService<IEventBus>();
+
+        eventBus.Publish(new OrderCreatedIntegrationEvent(1));
+    }
+
+    private EventBusConfig GetAzureConfig()
+    {
+        return new EventBusConfig
+        {
+            ConnectionRetryCount = 5,
+            SubscriberClientAppName = "EventBus.UnitTest",
+            DefaultTopicName = "MicroServiceTopicName",
+            EventBusType = EventBusType.AzureServiceBus,
+            EventNameSuffix = "IntegrationEvent",
+            EventBusConnectionString =
+                "Endpoint=sb://microtest.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=s3k41+t9Eghm+vry1pxZ7Oaf0/uQuioEL+ASbB65V8Y="
+        };
+    }
+
+    private EventBusConfig GetRabbitConfig()
+    {
+        return new EventBusConfig
+        {
+            ConnectionRetryCount = 5,
+            SubscriberClientAppName = "EventBus.UnitTest",
+            DefaultTopicName = "MicroServiceTopicName",
+            EventBusType = EventBusType.RabbitMQ,
+            EventNameSuffix = "IntegrationEvent",
+            // Connection = new ConnectionFactory()
+            // {
+            //     HostName = "localhost",
+            //     Port = 5672,
+            //     UserName = "guest",
+            //     Password = "guest"
+            // }
+        };
     }
 }

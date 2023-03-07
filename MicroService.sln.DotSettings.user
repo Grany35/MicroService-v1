@@ -3,5 +3,7 @@
   &lt;TestAncestor&gt;
     &lt;TestId&gt;MSTest::145AA3DA-F1C8-4AC8-AE24-B1C793ED75AA::net6.0::EventBus.UnitTest.EventBusTests.subscribe_event_on_rabbitmq_test&lt;/TestId&gt;
     &lt;TestId&gt;MSTest::145AA3DA-F1C8-4AC8-AE24-B1C793ED75AA::net6.0::EventBus.UnitTest.EventBusTests.subscribe_event_on_azure_test&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::145AA3DA-F1C8-4AC8-AE24-B1C793ED75AA::net6.0::EventBus.UnitTest.EventBusTests.send_message_to_azure_test&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::145AA3DA-F1C8-4AC8-AE24-B1C793ED75AA::net6.0::EventBus.UnitTest.EventBusTests.send_message_to_rabbitmq_test&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

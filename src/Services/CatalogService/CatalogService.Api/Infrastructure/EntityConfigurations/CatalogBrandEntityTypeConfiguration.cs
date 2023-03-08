@@ -14,12 +14,14 @@ public class CatalogBrandEntityTypeConfiguration : IEntityTypeConfiguration<Cata
 
         builder.HasKey(k => k.Id);
 
-        builder.Property(k => k.Id)
-            .UseHiLo("catalog_brand_hilo")
-            .IsRequired();
-
         builder.Property(k => k.Brand)
             .IsRequired()
             .HasMaxLength(100);
+
+        builder.HasData(new() { Id = 1,Brand = "Azure" },
+            new() { Id = 2,Brand = ".NET" },
+            new() {Id = 3, Brand = "Visual Studio" },
+            new() { Id = 4,Brand = "SQL Server" },
+            new() { Id = 5,Brand = "Other" });
     }
 }

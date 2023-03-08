@@ -16,6 +16,11 @@ public class CatalogContext : DbContext
     public DbSet<CatalogBrand> CatalogBrands { get; set; }
     public DbSet<CatalogType> CatalogTypes { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseNpgsql("Server=localhost;Database=CatalogDb;Username=sa;Password=Asd159123!;Port=5432;");
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new CatalogBrandEntityTypeConfiguration());

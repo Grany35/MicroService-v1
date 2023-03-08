@@ -13,12 +13,13 @@ public class CatalogTypeEntityTypeConfiguration : IEntityTypeConfiguration<Catal
 
         builder.HasKey(x => x.Id);
 
-        builder.Property(x => x.Id)
-            .UseHiLo("catalog_type_hilo")
-            .IsRequired();
-
         builder.Property(x => x.Type)
             .IsRequired()
             .HasMaxLength(100);
+
+        builder.HasData(new() { Id = 1, Type = "Mug" },
+            new() { Id = 2, Type = "T-Shirt" },
+            new() { Id = 3, Type = "Sheet" },
+            new() { Id = 4, Type = "USB Memory Stick" });
     }
 }

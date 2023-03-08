@@ -1,4 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using CatalogService.Api.Infrastructure;
+using CatalogService.Api.Infrastructure.Context;
+
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions
+{
+    Args = args,
+    WebRootPath = "Pics",
+    ContentRootPath = Directory.GetCurrentDirectory()
+});
 
 // Add services to the container.
 
@@ -7,7 +15,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddDbContext<CatalogContext>();
+builder.Services.Configure<CatalogSettings>(builder.Configuration.GetSection("CatalogSettings"));
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
